@@ -35,45 +35,60 @@ import random
 #Zadanie 4............................................................
 # JAK ZAKOŃCZYĆ DZIAŁANIE PO PIERWSZEJ WPISANEJ ZŁEJ WARTOŚCI?
 
+# ENUMY
+# FUKNCJE LOGICZNE
+# import sys
 # podaj_wariant1 = input("kamień, papier, nożyce?: ")
-# podaj_wariant2 = input("kamień, papier, nożyce?: ")
 #
-# if (podaj_wariant1 == "kamień" or podaj_wariant1 == "papier" or podaj_wariant1 == "nożyce") and (podaj_wariant2 == "kamień" or podaj_wariant2 ==  "papier" or podaj_wariant2 ==  "nożyce"):
-#     if podaj_wariant1 == "kamień" and podaj_wariant2 == "nożyce":
-#         print("Wygrał zawodnik nr 1")
-#     elif podaj_wariant1 == "kamień" and podaj_wariant2 == "papier":
-#         print("Wygrał zawodnik nr 2")
-#     elif podaj_wariant2 == "kamień" and podaj_wariant1 == "nożyce":
-#         print("Wygrał zawodnik nr 2")
-#     elif podaj_wariant2 == "kamień" and podaj_wariant1 == "papier":
-#         print("Wygrał zawodnik nr 1")
-#
-#     elif podaj_wariant1 == "nożyce" and podaj_wariant2 == "papier":
-#         print("Wygrał zawodnik nr 1")
-#     elif podaj_wariant1 == "nożyce" and podaj_wariant2 == "kamień":
-#         print("Wygrał zawodnik nr 2")
-#     elif podaj_wariant2 == "nożyce" and podaj_wariant1 == "papier":
-#         print("Wygrał zawodnik nr 2")
-#     elif podaj_wariant2 == "nożyce" and podaj_wariant1 == "kamień":
-#         print("Wygrał zawodnik nr 1")
-#
-#     elif podaj_wariant1 == "papier" and podaj_wariant2 == "nożyce":
-#         print("Wygrał zawodnik nr 2")
-#     elif podaj_wariant1 == "papier" and podaj_wariant2 == "kamień":
-#         print("Wygrał zawodnik nr 1")
-#     elif podaj_wariant2 == "papier" and podaj_wariant1 == "nożyce":
-#         print("Wygrał zawodnik nr 1")
-#     elif podaj_wariant2 == "papier" and podaj_wariant1 == "kamień":
-#         print("Wygrał zawodnik nr 2")
-#
-#     elif podaj_wariant1 == "kamień" and podaj_wariant2 == "kamień":
-#         print("Remis")
-#     elif podaj_wariant1 == "nożyce" and podaj_wariant2 == "nożyce":
-#         print("Remis")
-#     elif podaj_wariant1 == "papier" and podaj_wariant2 == "papier":
-#         print("Remis")
+# if podaj_wariant1 in ["kamień", "papier", "nożyce"]:
+#     podaj_wariant2 = input("kamień, papier, nożyce?: ")
+#     if podaj_wariant2 in ["kamień", "papier", "nożyce"]:
+#         print(podaj_wariant1)
+#         print(podaj_wariant2)
+#         if podaj_wariant1 == podaj_wariant2:
+#             print("Remis")
+#         elif podaj_wariant1 == "kamień" and podaj_wariant2 == "nożyce" or  podaj_wariant1 == "kamień" and podaj_wariant2 == "papier" or podaj_wariant1 == "nożyce" and podaj_wariant2 == "papier" or podaj_wariant1 == "nożyce" and podaj_wariant2 == "kamień":
+#             print("Wygrał zawodnik nr 1")
+#         else:
+#             print("Wygrał zawodnik 2")
 # else:
-#     print("Błędne dane")
+#     sys.exit()
+
+# while True:
+#     podaj_wariant2 = input("kamień, papier, nożyce?: ")
+#     if (podaj_wariant1 == "kamień" or podaj_wariant1 == "papier" or podaj_wariant1 == "nożyce") and (podaj_wariant2 == "kamień" or podaj_wariant2 ==  "papier" or podaj_wariant2 ==  "nożyce"):
+#         if podaj_wariant1 == "kamień" and podaj_wariant2 == "nożyce":
+#             print("Wygrał zawodnik nr 1")
+#         elif podaj_wariant1 == "kamień" and podaj_wariant2 == "papier":
+#             print("Wygrał zawodnik nr 2")
+#         elif podaj_wariant2 == "kamień" and podaj_wariant1 == "nożyce":
+#             print("Wygrał zawodnik nr 2")
+#         elif podaj_wariant2 == "kamień" and podaj_wariant1 == "papier":
+#             print("Wygrał zawodnik nr 1")
+#
+#         elif podaj_wariant1 == "nożyce" and podaj_wariant2 == "papier":
+#             print("Wygrał zawodnik nr 1")
+#         elif podaj_wariant1 == "nożyce" and podaj_wariant2 == "kamień":
+#             print("Wygrał zawodnik nr 2")
+#         elif podaj_wariant2 == "nożyce" and podaj_wariant1 == "papier":
+#             print("Wygrał zawodnik nr 2")
+#         elif podaj_wariant2 == "nożyce" and podaj_wariant1 == "kamień":
+#             print("Wygrał zawodnik nr 1")
+#
+#         elif podaj_wariant1 == "papier" and podaj_wariant2 == "nożyce":
+#             print("Wygrał zawodnik nr 2")
+#         elif podaj_wariant1 == "papier" and podaj_wariant2 == "kamień":
+#             print("Wygrał zawodnik nr 1")
+#         elif podaj_wariant2 == "papier" and podaj_wariant1 == "nożyce":
+#             print("Wygrał zawodnik nr 1")
+#         elif podaj_wariant2 == "papier" and podaj_wariant1 == "kamień":
+#             print("Wygrał zawodnik nr 2")
+#
+#         elif podaj_wariant1 == podaj_wariant2:
+#             print("Remis")
+#
+#     else:
+#         print("Błędne dane")
 
 #Zadanie 5.........................................................................
 
@@ -136,12 +151,21 @@ import random
 # for i in range(100, 49, -1):
 #     print(i)
 
-# Nie kumam, while
+# i = 100
+# while i != 49:
+#     print(i)
+#     i -= 1
 
 # Zadanie 3..............................................................
 
 # for i in range(0, 101, 5):
 #     print(i)
+
+# a = 1
+# b = 102
+# while a != b:
+#     print(a - 1)
+#     a += 5
 
 #Zadanie 4....................................................................
 
