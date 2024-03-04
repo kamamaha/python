@@ -55,3 +55,80 @@
 # student = Student("Paweł", "Nowak", 13, "informatyka")
 # student.print_info()
 
+# Zadanie 2 #######################################################################
+
+# class Car():
+#     def __init__(self, max_speed, odometr):
+#         """Info about car"""
+#         self.max_speed = max_speed
+#         self.odometr = odometr
+#     def describe_car_info(self):
+#         print("Samochód ma przejechane: " + str(self.odometr) + " km oraz jego max prędkość to: " + str(self.max_speed))
+#     def reading_odometr(self):
+#         """Show info about odometr"""
+#         print("Przebieg danego samochodu wynosi: " + str(self.odometr))
+#     def update_odometr(self, km):
+#         self.odometr = km
+#
+# new_car = Car(250.5, 0)
+# print(new_car.describe_car_info())
+# new_car.update_odometr(500)
+# new_car.reading_odometr()
+
+# Zadanie 3 #######################################################################
+
+# class Square():
+#     def __init__(self, length, width):
+#         """"Określanie długości i szerokości prostokąta"""
+#         self.length = length
+#         self.width = width
+#     def info_square(self):
+#         print("Długość prostokąta to: " + str(self.length) + " a szerkość to: " + str(self.width))
+#     def area_of_a_rectangle(self):
+#         result = self.length * self.width
+#         return print("Pole prostokąta to: " + str(result))
+#     def circumference_of_a_rectangle(self):
+#         result2 = 2 * (self.length) + 2 * (self.width)
+#         return print("Obwód prostokąta to: " + str(result2))
+#
+# new_square = Square(10, 20)
+# new_square.info_square()
+# new_square.area_of_a_rectangle()
+# new_square.circumference_of_a_rectangle()
+
+class BankAccount():
+    def __init__(self, account_number, owner, state_account):
+        self.account_number = account_number
+        self.owner = owner
+        self.state_account = state_account
+
+    def deposit(self):
+        """"Kwota ile będzie wpłacane na konto"""
+        deposit_amount = int(input("Ile chcesz wpłacić gotówki: "))
+        commission = int(deposit_amount/100) * 2
+
+        new_deposit_amount = deposit_amount - commission
+        self.state_account = new_deposit_amount + self.state_account
+        return self.state_account
+
+    def withdraw(self):
+        withdraw_amount = int(input("Ile chcesz wypłacić gotówki: "))
+
+        if withdraw_amount > self.state_account:
+            print("Nie możesz wypłacić tej kwoty, nie masz wystarczająco gotówki na koncie!")
+        else:
+            self.state_account = self.state_account - withdraw_amount
+            return self.state_account
+
+    def change_ownership(self):
+        new_owner = input("Imię nowego właściciela: ")
+        self.owner = new_owner
+        print("Nowy właściel to: " + self.owner.title())
+    def display(self):
+        print("Twoje konto ma obecnie: " + str(self.state_account) + " oraz zmieniono nazwę nowego właściela na: " + str(self.owner))
+
+new_bank_account = BankAccount(1234556778, "Kamila Grządko", 100)
+print(new_bank_account.deposit())
+print(new_bank_account.withdraw())
+new_bank_account.change_ownership()
+new_bank_account.display()
