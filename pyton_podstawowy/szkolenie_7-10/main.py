@@ -1,4 +1,6 @@
 # Zadanie 1 #######################################################################
+import random
+
 
 # nums = [4, 6, 8, 24, 12, 2]
 # def max_index():
@@ -36,8 +38,22 @@
 #     for i in list:
 #         if i >= 10:
 #             print(i)
+
 # a = [1,2,4,5,6,7,8,9,11,12]
 # select_list(a)
+
+# Zadanie 6 #######################################################################
+
+# def select_numbers(numbers):
+#     for number in numbers:
+#         if number >= 10:
+#             print(number)
+
+# numbers = [2, 5, 7, 8, 10, 15, 34, 76, 13, 64]
+# select_numbers(numbers)
+
+# Zadanie 8 #######################################################################
+
 
 # KLASY ...........................................................................
 # Zadanie 1 #######################################################################
@@ -96,39 +112,114 @@
 # new_square.area_of_a_rectangle()
 # new_square.circumference_of_a_rectangle()
 
-class BankAccount():
-    def __init__(self, account_number, owner, state_account):
-        self.account_number = account_number
-        self.owner = owner
-        self.state_account = state_account
+# Zadanie 4 #######################################################################
 
-    def deposit(self):
-        """"Kwota ile będzie wpłacane na konto"""
-        deposit_amount = int(input("Ile chcesz wpłacić gotówki: "))
-        commission = int(deposit_amount/100) * 2
+# class BankAccount():
+#     def __init__(self, account_number, owner, state_account):
+#         self.account_number = account_number
+#         self.owner = owner
+#         self.state_account = state_account
+#
+#     def deposit(self):
+#         """"Kwota ile będzie wpłacane na konto"""
+#         deposit_amount = int(input("Ile chcesz wpłacić gotówki: "))
+#         commission = int(deposit_amount/100) * 2
+#
+#         new_deposit_amount = deposit_amount - commission
+#         self.state_account = new_deposit_amount + self.state_account
+#         return self.state_account
+#
+#     def withdraw(self):
+#         withdraw_amount = int(input("Ile chcesz wypłacić gotówki: "))
+#
+#         if withdraw_amount > self.state_account:
+#             print("Nie możesz wypłacić tej kwoty, nie masz wystarczająco gotówki na koncie!")
+#         else:
+#             self.state_account = self.state_account - withdraw_amount
+#             return self.state_account
+#
+#     def change_ownership(self):
+#         new_owner = input("Imię nowego właściciela: ")
+#         self.owner = new_owner
+#         print("Nowy właściel to: " + self.owner.title())
+#     def display(self):
+#         print("Twoje konto ma obecnie: " + str(self.state_account) + " oraz zmieniono nazwę nowego właściela na: " + str(self.owner))
+#
+# new_bank_account = BankAccount(1234556778, "Kamila Grządko", 100)
+# print(new_bank_account.deposit())
+# print(new_bank_account.withdraw())
+# new_bank_account.change_ownership()
+# new_bank_account.display()
 
-        new_deposit_amount = deposit_amount - commission
-        self.state_account = new_deposit_amount + self.state_account
-        return self.state_account
+# Zadanie 5 #######################################################################
 
-    def withdraw(self):
-        withdraw_amount = int(input("Ile chcesz wypłacić gotówki: "))
+# class Card():
+#     def __init__(self, value, figure):
+#         self.value = value
+#         self.figure = figure
+#     def show_card(self):
+#         return self.value, self.figure
+#
+# class Deck():
+#     def __init__(self):
+#         values = [2, 3, 4, 5, 6, 7, 8, 9, 10, "jack", "queen", "king", "ace"]
+#         figures = ["heart", "diamond", "club", "spade"]
+#         self.cards = []
+#         for value in values:
+#             for figure in figures:
+#                 self.cards.append(Card(value, figure))
+#     def show_deck(self):
+#         return self.cards
+#     def all_deck(self):
+#         for i in range(len(self.cards)):
+#             print(f"{i+1}{self.cards[i].show_card()}")
+#     def draw_card(self):
+#         import random
+#         card = random.choice(self.cards)
+#         self.cards.remove(card)
+#         return card
+#
+# deck = Deck()
+# print(deck.cards.__len__())
+# print(deck.all_deck())
 
-        if withdraw_amount > self.state_account:
-            print("Nie możesz wypłacić tej kwoty, nie masz wystarczająco gotówki na koncie!")
-        else:
-            self.state_account = self.state_account - withdraw_amount
-            return self.state_account
 
-    def change_ownership(self):
-        new_owner = input("Imię nowego właściciela: ")
-        self.owner = new_owner
-        print("Nowy właściel to: " + self.owner.title())
-    def display(self):
-        print("Twoje konto ma obecnie: " + str(self.state_account) + " oraz zmieniono nazwę nowego właściela na: " + str(self.owner))
+# DZIEDZICZENIE ...........................................................................
 
-new_bank_account = BankAccount(1234556778, "Kamila Grządko", 100)
-print(new_bank_account.deposit())
-print(new_bank_account.withdraw())
-new_bank_account.change_ownership()
-new_bank_account.display()
+# ZADANIE 1 ######################################################
+
+# class Shape:
+#     def __init__(self, width, length = 0):
+#         self.width = width
+#         self.length = length
+#     def area(self):
+#         area = self.width * self.length
+#         return area
+#
+# class Square(Shape):
+#     def __init__(self, width, length):
+#         super().__init__(width, length)
+#
+# figure = Square(4, 10)
+# print(figure.area())
+
+
+# ZADANIE 2 ######################################################
+
+# class Pojazdy:
+#     def __init__(self, zajezdnia, max_szybkosc, numer):
+#         self.zajezdnia = zajezdnia
+#         self.max_szybkosc = max_szybkosc
+#         self.numer = numer
+#
+#
+# class Tramwaj(Pojazdy):
+#     def __init__(self, zajezdnia, max_szybkosc, numer):
+#         super().__init__(zajezdnia, max_szybkosc, numer)
+#         self.wagony = [1, 2, 3]
+#
+#
+# class Autobusy(Pojazdy):
+#     def __init__(self, zajezdnia, max_szybkosc, numer):
+#         super().__init__(zajezdnia, max_szybkosc, numer)
+#         self.ile_paliwa = self.ile_paliwa
