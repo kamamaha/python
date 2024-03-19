@@ -153,14 +153,17 @@ import random
 
 # Zadanie 5 #######################################################################
 
-# class Card():
+# class Card:
 #     def __init__(self, value, figure):
 #         self.value = value
 #         self.figure = figure
+#
 #     def show_card(self):
 #         return self.value, self.figure
 #
-# class Deck():
+#
+# class Deck:
+#     cards = []
 #     def __init__(self):
 #         values = [2, 3, 4, 5, 6, 7, 8, 9, 10, "jack", "queen", "king", "ace"]
 #         figures = ["heart", "diamond", "club", "spade"]
@@ -168,6 +171,7 @@ import random
 #         for value in values:
 #             for figure in figures:
 #                 self.cards.append(Card(value, figure))
+#
 #     def show_deck(self):
 #         return self.cards
 #     def all_deck(self):
@@ -178,9 +182,15 @@ import random
 #         card = random.choice(self.cards)
 #         self.cards.remove(card)
 #         return card
+#     def __str__(self):
+#         return "hello"
+#     def __add__(self, other):
+#         return self.cards + other.cards
 #
 # deck = Deck()
-# print(deck.cards.__len__())
+# print(Deck())
+# print(len(Deck() + Deck()))
+# print(deck.cards.__len__() == len(deck.cards))
 # print(deck.all_deck())
 
 
@@ -206,20 +216,59 @@ import random
 
 # ZADANIE 2 ######################################################
 
-# class Pojazdy:
-#     def __init__(self, zajezdnia, max_szybkosc, numer):
-#         self.zajezdnia = zajezdnia
-#         self.max_szybkosc = max_szybkosc
-#         self.numer = numer
+class Zajezdnia:
+    pass
+
+class Pojazd:
+    def __init__(self, max_szybkosc: float, numer_pojazdu: int, zajezdnia: Zajezdnia = None):
+        self.max_szybkosc = max_szybkosc
+        self.numer_pojazdu = numer_pojazdu
+        self.zajezdnia = zajezdnia
+
+class Tramwaj(Pojazd):
+    def __init__(self, wagony: int) -> None:
+        super().__init__(111, 12)
+        self.wagony = wagony
+
+    def ile_wagonow(self):
+        lista_wagonow = []
+        while True:
+            wagon = input("Ile wagonów ma tramwaj: ")
+            if wagon == "": break
+            lista_wagonow.append(wagon)
+        return lista_wagonow
+    def __str__(self):
+        return "Dany tramwaj ma nr " + str(self.numer_pojazdu) + " jeździ z max. szybkością " + str(self.max_szybkosc) + " km/h i posiada " + str(self.wagony) + " liczbę wagonów."
+
+class ZajezdniaTramwajowa(Pojazd, Tramwaj):
+    def __int__(self):
+
+
+
+class ZajezdniaAutobusowa(Zajezdnia):
+
+    # def __init__(self, zuzycie_paliwa: float, suma_msc_zuzycia_paliwa: float):
+    #     self.zuzycie_paliwa = zuzycie_paliwa
+    #     self.suma_msc_zuzycia_paliwa = suma_msc_zuzycia_paliwa
+    #
+    # def msc_zuzycie_paliwa(self):
+    #     suma_msc_zuzycia_paliwa = 30 * self.zuzycie_paliwa
+    #     return suma_msc_zuzycia_paliwa
+    #
+    # def __str__(self):
+    #     return "Atobusy zużywają " + str(self.suma_msc_zuzycia_paliwa)
+    pass
+# class Autobus(Pojazd):
+#     def __init__(self, zajezdnia: ZajezdniaAutobusowa, max_szybkosc: float, numer_pojazdu: int, ile_paliwa: float) -> None:
+#         super().__init__(max_szybkosc, numer_pojazdu)
+#         self.ile_paliwa = ile_paliwa
 #
-#
-# class Tramwaj(Pojazdy):
-#     def __init__(self, zajezdnia, max_szybkosc, numer):
-#         super().__init__(zajezdnia, max_szybkosc, numer)
-#         self.wagony = [1, 2, 3]
-#
-#
-# class Autobusy(Pojazdy):
-#     def __init__(self, zajezdnia, max_szybkosc, numer):
-#         super().__init__(zajezdnia, max_szybkosc, numer)
-#         self.ile_paliwa = self.ile_paliwa
+#     def __str__(self):
+#         return "Dany autobus ma nr " + str(self.numer_pojazdu) + " jeździ z max. szybkością " + str(self.max_szybkosc) + " km/h i zużywa " + str(self.ile_paliwa) + " litrów paliwa na godzinę jazdy."
+
+
+if __name__ == "__main__":
+    tramwaj1 = Tramwaj(3)
+    tramwaj1.ile_wagonow()
+    print(tramwaj1.ile_wagonow())
+    print(tramwaj1)
