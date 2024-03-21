@@ -256,41 +256,51 @@ class ZajezdniaTramwajowa(Zajezdnia):
         super().przypisz_pojazd(pojazd)
         self.ilosc_wagonow += pojazd.wagony
 
-class ZajezdniaAutobusowa(Zajezdnia):
+    def __str__(self):
+        return (f"Dana zajezdnia to Zajezdnia Tramwajowa, w której znajdują się tramwaje: \n "
+                f"")
 
-    # def __init__(self, zuzycie_paliwa: float, suma_msc_zuzycia_paliwa: float):
-    #     self.zuzycie_paliwa = zuzycie_paliwa
-    #     self.suma_msc_zuzycia_paliwa = suma_msc_zuzycia_paliwa
-    #
-    # def msc_zuzycie_paliwa(self):
-    #     suma_msc_zuzycia_paliwa = 30 * self.zuzycie_paliwa
-    #     return suma_msc_zuzycia_paliwa
-    #
-    # def __str__(self):
-    #     return "Atobusy zużywają " + str(self.suma_msc_zuzycia_paliwa)
-    pass
-# class Autobus(Pojazd):
-#     def __init__(self, zajezdnia: ZajezdniaAutobusowa, max_szybkosc: float, numer_pojazdu: int, ile_paliwa: float) -> None:
-#         super().__init__(max_szybkosc, numer_pojazdu)
-#         self.ile_paliwa = ile_paliwa
-#
-#     def __str__(self):
-#         return "Dany autobus ma nr " + str(self.numer_pojazdu) + " jeździ z max. szybkością " + str(self.max_szybkosc) + " km/h i zużywa " + str(self.ile_paliwa) + " litrów paliwa na godzinę jazdy."
+class ZajezdniaAutobusowa(Zajezdnia):
+    def __init__(self):
+        super().__init__()
+        self.zuzycie_paliwa = 0
+
+    def przypisz_pojazd(self, pojazd):
+        super().przypisz_pojazd(pojazd)
+        self.zuzycie_paliwa += pojazd.ile_paliwa
+
+
+class Autobus(Pojazd):
+    def __init__(self, ile_paliwa: float, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+        self.ile_paliwa = ile_paliwa
+
+    def __str__(self):
+        return f"Dany autobus ma nr {self.numer_pojazdu} jeździ z max. szybkością {self.max_szybkosc} km/h i zużywa {self.ile_paliwa} paliwa."
 
 
 if __name__ == "__main__":
-    params = [3, 100, 11]
-    name = {"max_szybkosc": 120, "numer_pojazdu": 10}
-    tramwaj1 = Tramwaj(*params)
-    tramwaj2 = Tramwaj(wagony = 5 , **name)
-    # print(*tramwaj1.ile_wagonow())
+    dane1 = [3, 100, 11]
+    dane2 = {"max_szybkosc": 120, "numer_pojazdu": 10}
+    tramwaj1 = Tramwaj(*dane1)
+    tramwaj2 = Tramwaj(wagony = 5 , **dane2)
     print(tramwaj1)
     print(tramwaj2)
     zajezdnia = ZajezdniaTramwajowa()
-    print(tramwaj1.zajezdnia)
     zajezdnia.przypisz_pojazd(tramwaj1)
-    print(tramwaj1.zajezdnia)
     zajezdnia.przypisz_pojazd(tramwaj2)
+    print(tramwaj1.zajezdnia)
+    print(tramwaj2.zajezdnia)
     print(zajezdnia.ilosc_wagonow)
 
+    autobus1 = Autobus(1750, 80, 1)
+    print(autobus1)
+    autobus2 = Autobus(1500, 88, 2)
+    print(autobus2)
+    zajezdnia2 = ZajezdniaAutobusowa()
+    zajezdnia2.przypisz_pojazd(autobus1)
+    zajezdnia2.przypisz_pojazd(autobus2)
+
+
+    print(zajezdnia2.zuzycie_paliwa)
 
