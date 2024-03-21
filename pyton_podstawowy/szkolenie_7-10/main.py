@@ -217,8 +217,13 @@ import random
 # ZADANIE 2 ######################################################
 
 class Zajezdnia:
-    pass
+    def __init__(self):
+        self.lista_pojazdow = []
 
+    def przypisz_pojazd(self, pojazd):
+        self.lista_pojazdow.append(pojazd)
+        pojazd.zajezdnia = self
+    
 class Pojazd:
     def __init__(self, max_szybkosc: float, numer_pojazdu: int, zajezdnia: Zajezdnia = None):
         self.max_szybkosc = max_szybkosc
@@ -226,24 +231,30 @@ class Pojazd:
         self.zajezdnia = zajezdnia
 
 class Tramwaj(Pojazd):
-    def __init__(self, wagony: int) -> None:
-        super().__init__(111, 12)
+    def __init__(self, wagony: int, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
         self.wagony = wagony
 
-    def ile_wagonow(self):
-        lista_wagonow = []
-        while True:
-            wagon = input("Ile wagonów ma tramwaj: ")
-            if wagon == "": break
-            lista_wagonow.append(wagon)
-        return lista_wagonow
+    # def ile_wagonow(self):
+    #     self.lista_wagonow = []
+    #     while True:
+    #         wagon = input("Ile wagonów ma tramwaj: ")
+    #         if wagon == "":
+    #             break
+    #         self.lista_wagonow.append(int(wagon))
+    #         print(self.lista_wagonow)
+    #     return self.lista_wagonow
+
     def __str__(self):
-        return "Dany tramwaj ma nr " + str(self.numer_pojazdu) + " jeździ z max. szybkością " + str(self.max_szybkosc) + " km/h i posiada " + str(self.wagony) + " liczbę wagonów."
+        return f"Dany tramwaj ma nr {self.numer_pojazdu} jeździ z max. szybkością {self.max_szybkosc} km/h i posiada {self.wagony} liczbę wagonów."
 
-class ZajezdniaTramwajowa(Pojazd, Tramwaj):
-    def __int__(self):
-
-
+class ZajezdniaTramwajowa(Zajezdnia):
+    def __init__(self):
+        super().__init__()
+        self.ilosc_wagonow = 0
+    def przypisz_pojazd(self, pojazd):
+        super().przypisz_pojazd(pojazd)
+        self.ilosc_wagonow += pojazd.wagony
 
 class ZajezdniaAutobusowa(Zajezdnia):
 
@@ -268,7 +279,18 @@ class ZajezdniaAutobusowa(Zajezdnia):
 
 
 if __name__ == "__main__":
-    tramwaj1 = Tramwaj(3)
-    tramwaj1.ile_wagonow()
-    print(tramwaj1.ile_wagonow())
+    params = [3, 100, 11]
+    name = {"max_szybkosc": 120, "numer_pojazdu": 10}
+    tramwaj1 = Tramwaj(*params)
+    tramwaj2 = Tramwaj(wagony = 5 , **name)
+    # print(*tramwaj1.ile_wagonow())
     print(tramwaj1)
+    print(tramwaj2)
+    zajezdnia = ZajezdniaTramwajowa()
+    print(tramwaj1.zajezdnia)
+    zajezdnia.przypisz_pojazd(tramwaj1)
+    print(tramwaj1.zajezdnia)
+    zajezdnia.przypisz_pojazd(tramwaj2)
+    print(zajezdnia.ilosc_wagonow)
+
+
